@@ -1,10 +1,10 @@
-package McDonald's;
+package McDonalds;
 
 
 /**
  * @author willi
  * @version 1.0
- * @created 12-juin-2025 17:11:03
+ * @created 12-juin-2025 18:15:38
  */
 public class OrderLine {
 
@@ -19,8 +19,24 @@ public class OrderLine {
 	public void finalize() throws Throwable {
 
 	}
+	public int calculateOrderLinePrice(){
+		return 0;
+	}
+
 	public Product getProduct(){
 		return m_Product;
+	}
+
+	public Product getProduct(){
+		return m_Product;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setProduct(Product newVal){
+		m_Product = newVal;
 	}
 
 	/**

@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////
 //  Product.h
 //  Implementation of the Class Product
-//  Created on:      12-juin-2025 17:25:44
+//  Created on:      12-juin-2025 18:15:00
 //  Original author: willi
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_64026AEE_55C1_4eb8_92AA_D1980C3AF04B__INCLUDED_)
-#define EA_64026AEE_55C1_4eb8_92AA_D1980C3AF04B__INCLUDED_
+#if !defined(EA_602A45DA_8958_4ef7_94C3_1E7320876AA9__INCLUDED_)
+#define EA_602A45DA_8958_4ef7_94C3_1E7320876AA9__INCLUDED_
 
 class Product
 {
@@ -26,4 +26,4 @@ private:
 	int stock;
 
 };
-#endif // !defined(EA_64026AEE_55C1_4eb8_92AA_D1980C3AF04B__INCLUDED_)
+#endif // !defined(EA_602A45DA_8958_4ef7_94C3_1E7320876AA9__INCLUDED_)

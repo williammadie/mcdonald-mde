@@ -1,10 +1,10 @@
-package McDonald's;
+package McDonalds;
 
 
 /**
  * @author willi
  * @version 1.0
- * @created 12-juin-2025 17:11:12
+ * @created 12-juin-2025 18:15:48
  */
 public class Receipt {
 

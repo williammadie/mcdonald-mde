@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////
 //  Client.cpp
 //  Implementation of the Class Client
-//  Created on:      12-juin-2025 17:25:13
+//  Created on:      12-juin-2025 18:14:32
 //  Original author: willi
 ///////////////////////////////////////////////////////////
 
@@ -28,7 +28,19 @@ Bank Client::GetBank(){
 }
 
 
+Bank Client::getBank(){
+
+	return m_Bank;
+}
+
+
 void Client::SetBank(Bank newVal){
+
+	m_Bank = newVal;
+}
+
+
+void Client::setBank(Bank newVal){
 
 	m_Bank = newVal;
 }

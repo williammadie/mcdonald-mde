@@ -1,10 +1,10 @@
-package McDonald's;
+package McDonalds;
 
 
 /**
  * @author willi
  * @version 1.0
- * @created 12-juin-2025 17:10:43
+ * @created 12-juin-2025 18:15:27
  */
 public class Client {
 
@@ -22,6 +22,18 @@ public class Client {
 	}
 	public Bank getBank(){
 		return m_Bank;
+	}
+
+	public Bank getBank(){
+		return m_Bank;
+	}
+
+	/**
+	 * 
+	 * @param newVal
+	 */
+	public void setBank(Bank newVal){
+		m_Bank = newVal;
 	}
 
 	/**

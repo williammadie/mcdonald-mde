@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////
 //  Client.h
 //  Implementation of the Class Client
-//  Created on:      12-juin-2025 17:25:13
+//  Created on:      12-juin-2025 18:14:32
 //  Original author: willi
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_E5108110_F8EB_40dd_BDC1_F0B1441FB710__INCLUDED_)
-#define EA_E5108110_F8EB_40dd_BDC1_F0B1441FB710__INCLUDED_
+#if !defined(EA_E985686A_A0CC_44f4_83CF_0C7AC37B1FDA__INCLUDED_)
+#define EA_E985686A_A0CC_44f4_83CF_0C7AC37B1FDA__INCLUDED_
 
 #include "Bank.h"
 
@@ -18,7 +18,9 @@ public:
 	virtual ~Client();
 
 	Bank GetBank();
+	Bank getBank();
 	void SetBank(Bank newVal);
+	void setBank(Bank newVal);
 
 private:
 	int clientId;
@@ -27,4 +29,4 @@ private:
 	Bank *m_Bank;
 
 };
-#endif // !defined(EA_E5108110_F8EB_40dd_BDC1_F0B1441FB710__INCLUDED_)
+#endif // !defined(EA_E985686A_A0CC_44f4_83CF_0C7AC37B1FDA__INCLUDED_)

@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////
 //  CreditCard.cpp
 //  Implementation of the Class CreditCard
-//  Created on:      12-juin-2025 17:25:28
+//  Created on:      12-juin-2025 18:14:36
 //  Original author: willi
 ///////////////////////////////////////////////////////////
 
@@ -28,7 +28,19 @@ Client CreditCard::GetClient(){
 }
 
 
+Client CreditCard::getClient(){
+
+	return m_Client;
+}
+
+
 void CreditCard::SetClient(Client newVal){
+
+	m_Client = newVal;
+}
+
+
+void CreditCard::setClient(Client newVal){
 
 	m_Client = newVal;
 }

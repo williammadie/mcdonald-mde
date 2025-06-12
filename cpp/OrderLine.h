@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////
 //  OrderLine.h
 //  Implementation of the Class OrderLine
-//  Created on:      12-juin-2025 17:25:39
+//  Created on:      12-juin-2025 18:14:56
 //  Original author: willi
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_94A371F1_FF1A_44b9_8219_E0E2CF3E5D45__INCLUDED_)
-#define EA_94A371F1_FF1A_44b9_8219_E0E2CF3E5D45__INCLUDED_
+#if !defined(EA_AA12A88F_2288_45a5_9194_0985A319C156__INCLUDED_)
+#define EA_AA12A88F_2288_45a5_9194_0985A319C156__INCLUDED_
 
 #include "Product.h"
 
@@ -17,8 +17,11 @@ public:
 	OrderLine();
 	virtual ~OrderLine();
 
+	int calculateOrderLinePrice();
 	Product GetProduct();
+	Product getProduct();
 	void SetProduct(Product newVal);
+	void setProduct(Product newVal);
 
 private:
 	int orderId;
@@ -26,4 +29,4 @@ private:
 	Product *m_Product;
 
 };
-#endif // !defined(EA_94A371F1_FF1A_44b9_8219_E0E2CF3E5D45__INCLUDED_)
+#endif // !defined(EA_AA12A88F_2288_45a5_9194_0985A319C156__INCLUDED_)

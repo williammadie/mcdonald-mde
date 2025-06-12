@@ -1,10 +1,10 @@
-package McDonald's;
+package McDonalds;
 
 
 /**
  * @author willi
  * @version 1.0
- * @created 12-juin-2025 17:11:09
+ * @created 12-juin-2025 18:15:42
  */
 public class Product {
 
