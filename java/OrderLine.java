@@ -1,5 +1,3 @@
-package McDonalds;
-
 
 /**
  * @author willi
@@ -12,19 +10,17 @@ public class OrderLine {
 	private int quantity;
 	private Product m_Product;
 
-	public OrderLine(){
-
+	public OrderLine(int orderid, Product product, int quantity){
+		this.orderId = orderid;
+		this.quantity = quantity;
+		this.m_Product = product;
 	}
 
-	public void finalize() throws Throwable {
+	// public void finalize() throws Throwable {
 
-	}
+	// }
 	public int calculateOrderLinePrice(){
-		return 0;
-	}
-
-	public Product getProduct(){
-		return m_Product;
+		return quantity*m_Product.getPrice();
 	}
 
 	public Product getProduct(){
@@ -39,11 +35,22 @@ public class OrderLine {
 		m_Product = newVal;
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setProduct(Product newVal){
-		m_Product = newVal;
+	public int getOrderId() {
+		return orderId;
 	}
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+
+
 }//end OrderLine
