@@ -1,4 +1,4 @@
-package McDonalds;
+import java.util.Random;
 
 
 /**
@@ -9,20 +9,44 @@ package McDonalds;
 public class Bank {
 
 	private int bankId;
+	private String bankName;
+	private Random rand = new Random();
 
-	public Bank(){
-
+	public Bank(int bankid, String bankname){
+		this.bankId = bankid;
+        this.bankName = bankname;
 	}
 
-	public void finalize() throws Throwable {
-
+	public int getBankId() {
+    return bankId;
 	}
+
+	public void setBankId(int bankId) {
+		this.bankId = bankId;
+	}
+
+	public String getBankName() {
+		return bankName;
+	}
+
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+
+//C'est quoi ce finalize ?
+	// public void finalize() throws Throwable {
+
+	// }
+
 	/**
 	 * 
 	 * @param clientId
 	 * @param amount
 	 */
-	public boolean auhtorizePayment(int clientId, int amount){
-		return false;
-	}
+
+    public boolean authorizePayment(int clientId, int amount) {
+        // Generate a random boolean
+        return rand.nextBoolean();
+    }
+
 }//end Bank

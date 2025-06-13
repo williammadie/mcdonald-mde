@@ -1,10 +1,9 @@
-package McDonalds;
-
 
 /**
- * @author willi
- * @version 1.0
- * @created 12-juin-2025 18:15:42
+ * Product class
+ * Author: willi
+ * Version: 1.0
+ * Created: 12-juin-2025
  */
 public class Product {
 
@@ -13,30 +12,68 @@ public class Product {
 	private int productId;
 	private int stock;
 
-	public Product(){
-
+	public Product(String name, int price, int productId, int stock) {
+		this.name = name;
+		this.price = price;
+		this.productId = productId;
+		this.stock = stock;
 	}
 
-	public void finalize() throws Throwable {
+	// Suppressed finalize method (optional in modern Java)
+	// @Override
+	// protected void finalize() throws Throwable {
+	//     super.finalize();
+	// }
 
+
+	public String getName() {
+		return name;
 	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
 	/**
-	 * 
-	 * @param quantity
+	 * Secure wrapper to decrease stock
+	 * @param quantity number of items to remove
 	 */
-	public void decreaseStock(int quantity){
-
+	public void decreaseStock(int quantity) {
+		if (quantity <= 0) {
+			System.out.println("Quantity must be positive.");
+			return;
+		}
+		if (stock < quantity) {
+			System.out.println("Insufficient stock to perform this action.");
+			return;
+		}
+		stock -= quantity;
 	}
 
 	/**
-	 * 
-	 * @param quantity
+	 * Increase the stock
+	 * @param quantity number of items to add
 	 */
-	public void increaseStock(int quantity){
-
+	public void increaseStock(int quantity) {
+		if (quantity > 0) {
+			stock += quantity;
+		}
 	}
 
-	public void restock(){
-
+	/**
+	 * Restocks by adding 50 items
+	 */
+	public void restock() {
+		stock += 50;
 	}
-}//end Product
+
+
+}

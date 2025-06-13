@@ -1,11 +1,12 @@
-package McDonalds;
-
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
- * Test rigolo
- * @author willi
- * @version 1.0
- * @created 12-juin-2025 18:15:34
+ * Order class
+ * Author: willi
+ * Version: 1.0
+ * Created: 12-juin-2025 18:15:34
  */
 public class Order {
 
@@ -13,101 +14,106 @@ public class Order {
 	private boolean isPaid;
 	private int orderId;
 	private Client m_Client;
-	private OrderLine m_OrderLine;
 	private Receipt m_Receipt;
+	private List<OrderLine> orderLines;
 
-	public Order(){
-
+	public Order() {
+		this.orderLines = new ArrayList<>();
+		this.isPaid = false;
 	}
 
-	public void finalize() throws Throwable {
-
+	/**
+	 * Add an OrderLine to the list (up to 4 max)
+	 */
+	public void addOrderLine(OrderLine orderLine) {
+		if (orderLines.size() < 4) {
+			orderLines.add(orderLine);
+		} else {
+			System.out.println("Cannot add more than 4 products to the order.");
+		}
 	}
-	public void addOrderLine(){
 
+	/**
+	 * Calculate total price of all order lines
+	 */
+	public int calculateOrderPrice() {
+		int total = 0;
+		for (OrderLine line : orderLines) {
+			total += line.calculateOrderLinePrice();
+		}
+		return total;
 	}
 
-	public int calculateOrderPrice(){
-		return 0;
+	/**
+	 * Attempt to pay using the client's bank
+	 */
+	public void pay() {
+		int amount = calculateOrderPrice();
+		Bank clientBank = m_Client.getBank();
+		boolean authorized = clientBank.authorizePayment(m_Client.getClientId(), amount);
+		this.isPaid = authorized;
+
+		if (authorized) {
+			System.out.println("Order Class : Payment authorized.");
+			// Optionally create receipt here
+		} else {
+			System.out.println("Order Class : Payment declined.");
+		}
 	}
 
-	public Client getClient(){
+	/**
+	 * Remove an OrderLine by Product
+	 */
+	public void removeOrderLine(Product product) {
+		Iterator<OrderLine> iterator = orderLines.iterator();
+		while (iterator.hasNext()) {
+			OrderLine line = iterator.next();
+			if (line.getProduct().equals(product)) {
+				iterator.remove();
+				System.out.println("Order Class : Product removed from order.");
+				return;
+			}
+		}
+		System.out.println("Order Class : Product not found in order.");
+	}
+
+	public Client getClient() {
 		return m_Client;
 	}
 
-	public Client getClient(){
-		return m_Client;
+	public void setClient(Client client) {
+		this.m_Client = client;
 	}
 
-	public OrderLine getOrderLine(){
-		return m_OrderLine;
-	}
-
-	public OrderLine getOrderLine(){
-		return m_OrderLine;
-	}
-
-	public Receipt getReceipt(){
+	public Receipt getReceipt() {
 		return m_Receipt;
 	}
 
-	public Receipt getReceipt(){
-		return m_Receipt;
+	public void setReceipt(Receipt receipt) {
+		this.m_Receipt = receipt;
 	}
 
-	public void pay(){
-
+	public int getOrderId() {
+		return orderId;
 	}
 
-	public void removeOrderLine(){
-
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setClient(Client newVal){
-		m_Client = newVal;
+	public String getCreditCardNumber() {
+		return creditCardNumber;
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setClient(Client newVal){
-		m_Client = newVal;
+	public void setCreditCardNumber(String creditCardNumber) {
+		this.creditCardNumber = creditCardNumber;
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setOrderLine(OrderLine newVal){
-		m_OrderLine = newVal;
+	public boolean isPaid() {
+		return isPaid;
 	}
 
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setOrderLine(OrderLine newVal){
-		m_OrderLine = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setReceipt(Receipt newVal){
-		m_Receipt = newVal;
-	}
-
-	/**
-	 * 
-	 * @param newVal
-	 */
-	public void setReceipt(Receipt newVal){
-		m_Receipt = newVal;
+	public List<OrderLine> getOrderLines() {
+		return orderLines;
 	}
 }//end Order
