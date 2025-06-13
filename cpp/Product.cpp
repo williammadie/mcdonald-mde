@@ -1,37 +1,28 @@
-///////////////////////////////////////////////////////////
-//  Product.cpp
-//  Implementation of the Class Product
-//  Created on:      12-juin-2025 18:15:00
-//  Original author: willi
-///////////////////////////////////////////////////////////
-
 #include "Product.h"
 
+Product::Product(const std::string& name, int price, int stock)
+    : name(name), price(price), stock(stock) {}
 
-Product::Product(){
+Product::~Product() {}
 
+std::string Product::getName() const {
+    return name;
 }
 
-
-
-Product::~Product(){
-
+int Product::getPrice() const {
+    return price;
 }
 
-
-
-
-
-void Product::decreaseStock(int quantity){
-
+int Product::getStock() const {
+    return stock;
 }
 
-
-void Product::increaseStock(int quantity){
-
+void Product::decreaseStock(int quantity) {
+    if (quantity <= stock) {
+        stock -= quantity;
+    }
 }
 
-
-void Product::restock(){
-
+void Product::increaseStock(int quantity) {
+    stock += quantity;
 }

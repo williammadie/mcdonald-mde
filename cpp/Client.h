@@ -1,32 +1,29 @@
-///////////////////////////////////////////////////////////
-//  Client.h
-//  Implementation of the Class Client
-//  Created on:      12-juin-2025 18:14:32
-//  Original author: willi
-///////////////////////////////////////////////////////////
+#ifndef CLIENT_H
+#define CLIENT_H
 
-#if !defined(EA_E985686A_A0CC_44f4_83CF_0C7AC37B1FDA__INCLUDED_)
-#define EA_E985686A_A0CC_44f4_83CF_0C7AC37B1FDA__INCLUDED_
+#include <string>
+class Bank; // Déclaration anticipée de Bank
 
-#include "Bank.h"
+#include "CreditCard.h"
 
-class Client
-{
-
+class Client {
 public:
-	Client();
-	virtual ~Client();
+    Client(const std::string& firstName, const std::string& lastName, Bank* bank);
+    virtual ~Client();
 
-	Bank GetBank();
-	Bank getBank();
-	void SetBank(Bank newVal);
-	void setBank(Bank newVal);
+    int getClientId() const;
+    CreditCard* getCreditCard() const;
+    void setCreditCard(CreditCard* creditCard);
+
+    Bank* getBank() const;
 
 private:
-	int clientId;
-	int firstName;
-	int lastName;
-	Bank *m_Bank;
-
+    static int nextClientId; // Génère des IDs uniques
+    int clientId;            // Identifiant unique du client
+    std::string firstName;
+    std::string lastName;
+    CreditCard* creditCard;
+    Bank* bank; // Pointeur vers Bank
 };
-#endif // !defined(EA_E985686A_A0CC_44f4_83CF_0C7AC37B1FDA__INCLUDED_)
+
+#endif // CLIENT_H

@@ -1,32 +1,24 @@
-///////////////////////////////////////////////////////////
-//  OrderLine.h
-//  Implementation of the Class OrderLine
-//  Created on:      12-juin-2025 18:14:56
-//  Original author: willi
-///////////////////////////////////////////////////////////
-
-#if !defined(EA_AA12A88F_2288_45a5_9194_0985A319C156__INCLUDED_)
-#define EA_AA12A88F_2288_45a5_9194_0985A319C156__INCLUDED_
+#ifndef ORDERLINE_H
+#define ORDERLINE_H
 
 #include "Product.h"
 
-class OrderLine
-{
-
+class OrderLine {
 public:
-	OrderLine();
-	virtual ~OrderLine();
+    OrderLine(Product* product, int quantity);
+    virtual ~OrderLine();
 
-	int calculateOrderLinePrice();
-	Product GetProduct();
-	Product getProduct();
-	void SetProduct(Product newVal);
-	void setProduct(Product newVal);
+    Product* getProduct() const;
+    void setProduct(Product* product);
+
+    int getQuantity() const;
+    void setQuantity(int quantity);
+
+    int calculateOrderLinePrice() const;
 
 private:
-	int orderId;
-	int quantity;
-	Product *m_Product;
-
+    Product* product; // Pointer to the associated Product
+    int quantity;     // Quantity of the product
 };
-#endif // !defined(EA_AA12A88F_2288_45a5_9194_0985A319C156__INCLUDED_)
+
+#endif // ORDERLINE_H

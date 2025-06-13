@@ -1,115 +1,43 @@
-///////////////////////////////////////////////////////////
-//  Order.cpp
-//  Implementation of the Class Order
-//  Created on:      12-juin-2025 18:14:40
-//  Original author: willi
-///////////////////////////////////////////////////////////
-
 #include "Order.h"
+#include "Bank.h" // Inclure Bank pour accéder à ses membres
+Order::Order(Client* client) : client(client), isPaid(false) {}
 
-
-Order::Order(){
-
+Order::~Order() {
+    for (auto orderLine : orderLines) {
+        delete orderLine; // Clean up dynamically allocated OrderLine objects
+    }
 }
 
-
-
-Order::~Order(){
-
+void Order::addOrderLine(OrderLine* orderLine) {
+    orderLines.push_back(orderLine);
 }
 
-
-
-
-
-void Order::addOrderLine(){
-
+void Order::validateOrder() {
+    for (auto orderLine : orderLines) {
+        Product* product = orderLine->getProduct();
+        if (product != nullptr && product->getStock() >= orderLine->getQuantity()) {
+            product->decreaseStock(orderLine->getQuantity());
+        } else {
+            throw std::runtime_error("Insufficient stock for product: " + product->getName());
+        }
+    }
 }
 
-
-int Order::calculateOrderPrice(){
-
-	return 0;
+Receipt* Order::pay() {
+    if (!isPaid) {
+        int totalPrice = calculateTotalPrice();
+        if (client->getBank()->authorizePayment(client->getCreditCard()->getClient()->getClientId(), totalPrice)) {
+            isPaid = true;
+            return new Receipt(client, totalPrice); // Generate receipt
+        }
+    }
+    return nullptr;
 }
 
-
-Client Order::GetClient(){
-
-	return m_Client;
-}
-
-
-Client Order::getClient(){
-
-	return m_Client;
-}
-
-
-OrderLine Order::GetOrderLine(){
-
-	return m_OrderLine;
-}
-
-
-OrderLine Order::getOrderLine(){
-
-	return m_OrderLine;
-}
-
-
-Receipt Order::GetReceipt(){
-
-	return m_Receipt;
-}
-
-
-Receipt Order::getReceipt(){
-
-	return m_Receipt;
-}
-
-
-void Order::pay(){
-
-}
-
-
-void Order::removeOrderLine(){
-
-}
-
-
-void Order::SetClient(Client newVal){
-
-	m_Client = newVal;
-}
-
-
-void Order::setClient(Client newVal){
-
-	m_Client = newVal;
-}
-
-
-void Order::SetOrderLine(OrderLine newVal){
-
-	m_OrderLine = newVal;
-}
-
-
-void Order::setOrderLine(OrderLine newVal){
-
-	m_OrderLine = newVal;
-}
-
-
-void Order::SetReceipt(Receipt newVal){
-
-	m_Receipt = newVal;
-}
-
-
-void Order::setReceipt(Receipt newVal){
-
-	m_Receipt = newVal;
+int Order::calculateTotalPrice() const {
+    int total = 0;
+    for (const auto& orderLine : orderLines) {
+        total += orderLine->calculateOrderLinePrice();
+    }
+    return total;
 }

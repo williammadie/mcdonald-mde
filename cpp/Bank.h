@@ -1,24 +1,20 @@
-///////////////////////////////////////////////////////////
-//  Bank.h
-//  Implementation of the Class Bank
-//  Created on:      12-juin-2025 18:14:28
-//  Original author: willi
-///////////////////////////////////////////////////////////
+#ifndef BANK_H
+#define BANK_H
 
-#if !defined(EA_7A97CDAB_F0F7_4616_98C1_4321A95AA337__INCLUDED_)
-#define EA_7A97CDAB_F0F7_4616_98C1_4321A95AA337__INCLUDED_
+#include <vector>
+#include "Client.h"
 
-class Bank
-{
-
+class Bank {
 public:
-	Bank();
-	virtual ~Bank();
+    Bank();
+    virtual ~Bank();
 
-	bool auhtorizePayment(int clientId, int amount);
+    bool authorizePayment(int clientId, int amount);
+    void addClient(const Client& client);
+    std::vector<Client> getClients() const;
 
 private:
-	int bankId;
-
+    std::vector<Client> clients; // Liste des clients
 };
-#endif // !defined(EA_7A97CDAB_F0F7_4616_98C1_4321A95AA337__INCLUDED_)
+
+#endif // BANK_H

@@ -1,30 +1,24 @@
-///////////////////////////////////////////////////////////
-//  CreditCard.h
-//  Implementation of the Class CreditCard
-//  Created on:      12-juin-2025 18:14:36
-//  Original author: willi
-///////////////////////////////////////////////////////////
+#ifndef CREDITCARD_H
+#define CREDITCARD_H
 
-#if !defined(EA_0286E3A1_8C36_4d53_A859_CF5205FE0DF1__INCLUDED_)
-#define EA_0286E3A1_8C36_4d53_A859_CF5205FE0DF1__INCLUDED_
+#include <string>
 
-#include "Client.h"
+class Client;
 
-class CreditCard
-{
-
+class CreditCard {
 public:
-	CreditCard();
-	virtual ~CreditCard();
+    CreditCard(const std::string& cardNumber, int creditLimit, Client* client);
+    virtual ~CreditCard();
 
-	Client GetClient();
-	Client getClient();
-	void SetClient(Client newVal);
-	void setClient(Client newVal);
+    std::string getCardNumber() const;
+    int getCreditLimit() const;
+    void setCreditLimit(int newLimit); // Ajout de la méthode setCreditLimit
+    Client* getClient() const;
 
 private:
-	int credit;
-	Client *m_Client;
-
+    std::string cardNumber;
+    int creditLimit;
+    Client* client;
 };
-#endif // !defined(EA_0286E3A1_8C36_4d53_A859_CF5205FE0DF1__INCLUDED_)
+
+#endif // CREDITCARD_H

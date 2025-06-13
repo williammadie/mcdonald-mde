@@ -1,19 +1,19 @@
-///////////////////////////////////////////////////////////
-//  Receipt.cpp
-//  Implementation of the Class Receipt
-//  Created on:      12-juin-2025 18:15:04
-//  Original author: willi
-///////////////////////////////////////////////////////////
-
 #include "Receipt.h"
+#include <ctime>
 
-
-Receipt::Receipt(){
-
+Receipt::Receipt(Client* client, int totalAmount)
+    : client(client), totalAmount(totalAmount) {
+    // Generate current date
+    time_t now = time(0);
+    date = ctime(&now);
 }
 
+Receipt::~Receipt() {}
 
+std::string Receipt::getDate() const {
+    return date;
+}
 
-Receipt::~Receipt(){
-
+int Receipt::getTotalAmount() const {
+    return totalAmount;
 }

@@ -1,46 +1,26 @@
-///////////////////////////////////////////////////////////
-//  Client.cpp
-//  Implementation of the Class Client
-//  Created on:      12-juin-2025 18:14:32
-//  Original author: willi
-///////////////////////////////////////////////////////////
-
 #include "Client.h"
+#include "Bank.h" // Inclure Bank ici, car il est utilisé dans les méthodes
+int Client::nextClientId = 1; // Initialisation de l'ID unique
 
-
-Client::Client(){
-
+Client::Client(const std::string& firstName, const std::string& lastName, Bank* bank)
+    : firstName(firstName), lastName(lastName), bank(bank), creditCard(nullptr) {
+    clientId = nextClientId++; // Assigne un ID unique
 }
 
+Client::~Client() {}
 
-
-Client::~Client(){
-
+int Client::getClientId() const {
+    return clientId;
 }
 
-
-
-
-
-Bank Client::GetBank(){
-
-	return m_Bank;
+CreditCard* Client::getCreditCard() const {
+    return creditCard;
 }
 
-
-Bank Client::getBank(){
-
-	return m_Bank;
+void Client::setCreditCard(CreditCard* creditCard) {
+    this->creditCard = creditCard;
 }
 
-
-void Client::SetBank(Bank newVal){
-
-	m_Bank = newVal;
-}
-
-
-void Client::setBank(Bank newVal){
-
-	m_Bank = newVal;
+Bank* Client::getBank() const {
+    return bank;
 }

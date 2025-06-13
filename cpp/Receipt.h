@@ -1,25 +1,21 @@
-///////////////////////////////////////////////////////////
-//  Receipt.h
-//  Implementation of the Class Receipt
-//  Created on:      12-juin-2025 18:15:04
-//  Original author: willi
-///////////////////////////////////////////////////////////
+#ifndef RECEIPT_H
+#define RECEIPT_H
 
-#if !defined(EA_83105DE5_8636_4bfa_BA51_81164054642B__INCLUDED_)
-#define EA_83105DE5_8636_4bfa_BA51_81164054642B__INCLUDED_
+#include <string>
+#include "Client.h"
 
-class Receipt
-{
-
+class Receipt {
 public:
-	Receipt();
-	virtual ~Receipt();
+    Receipt(Client* client, int totalAmount);
+    virtual ~Receipt();
+
+    std::string getDate() const;
+    int getTotalAmount() const;
 
 private:
-	String date;
-	int noClient;
-	int receiptId;
-	int totalAmount;
-
+    std::string date;
+    int totalAmount;
+    Client* client;
 };
-#endif // !defined(EA_83105DE5_8636_4bfa_BA51_81164054642B__INCLUDED_)
+
+#endif // RECEIPT_H

@@ -1,28 +1,26 @@
-///////////////////////////////////////////////////////////
-//  Bank.cpp
-//  Implementation of the Class Bank
-//  Created on:      12-juin-2025 18:14:28
-//  Original author: willi
-///////////////////////////////////////////////////////////
-
 #include "Bank.h"
+#include "Client.h" // Inclure Client ici, car il est utilisé dans les méthodes
+Bank::Bank() {}
 
+Bank::~Bank() {}
 
-Bank::Bank(){
-
+bool Bank::authorizePayment(int clientId, int amount) {
+    for (const auto& client : clients) {
+        if (client.getClientId() == clientId) { // Vérifie si le client existe
+            CreditCard* card = client.getCreditCard();
+            if (card != nullptr && card->getCreditLimit() >= amount) {
+                card->setCreditLimit(card->getCreditLimit() - amount); // Déduit le montant
+                return true; // Paiement autorisé
+            }
+        }
+    }
+    return false; // Paiement non autorisé
 }
 
-
-
-Bank::~Bank(){
-
+void Bank::addClient(const Client& client) {
+    clients.push_back(client); // Ajoute le client à la liste
 }
 
-
-
-
-
-bool Bank::auhtorizePayment(int clientId, int amount){
-
-	return false;
+std::vector<Client> Bank::getClients() const {
+    return clients; // Retourne la liste des clients
 }

@@ -1,29 +1,24 @@
-///////////////////////////////////////////////////////////
-//  Product.h
-//  Implementation of the Class Product
-//  Created on:      12-juin-2025 18:15:00
-//  Original author: willi
-///////////////////////////////////////////////////////////
+#ifndef PRODUCT_H
+#define PRODUCT_H
 
-#if !defined(EA_602A45DA_8958_4ef7_94C3_1E7320876AA9__INCLUDED_)
-#define EA_602A45DA_8958_4ef7_94C3_1E7320876AA9__INCLUDED_
+#include <string>
 
-class Product
-{
-
+class Product {
 public:
-	Product();
-	virtual ~Product();
+    Product(const std::string& name, int price, int stock);
+    virtual ~Product();
 
-	void decreaseStock(int quantity);
-	void increaseStock(int quantity);
-	void restock();
+    std::string getName() const;
+    int getPrice() const;
+    int getStock() const;
+
+    void decreaseStock(int quantity);
+    void increaseStock(int quantity);
 
 private:
-	String name;
-	int price;
-	int productId;
-	int stock;
-
+    std::string name;
+    int price;
+    int stock;
 };
-#endif // !defined(EA_602A45DA_8958_4ef7_94C3_1E7320876AA9__INCLUDED_)
+
+#endif // PRODUCT_H

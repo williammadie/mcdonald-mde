@@ -1,52 +1,29 @@
-///////////////////////////////////////////////////////////
-//  OrderLine.cpp
-//  Implementation of the Class OrderLine
-//  Created on:      12-juin-2025 18:14:56
-//  Original author: willi
-///////////////////////////////////////////////////////////
-
 #include "OrderLine.h"
 
+OrderLine::OrderLine(Product* product, int quantity)
+    : product(product), quantity(quantity) {}
 
-OrderLine::OrderLine(){
+OrderLine::~OrderLine() {}
 
+Product* OrderLine::getProduct() const {
+    return product;
 }
 
-
-
-OrderLine::~OrderLine(){
-
+void OrderLine::setProduct(Product* product) {
+    this->product = product;
 }
 
-
-
-
-
-int OrderLine::calculateOrderLinePrice(){
-
-	return 0;
+int OrderLine::getQuantity() const {
+    return quantity;
 }
 
-
-Product OrderLine::GetProduct(){
-
-	return m_Product;
+void OrderLine::setQuantity(int quantity) {
+    this->quantity = quantity;
 }
 
-
-Product OrderLine::getProduct(){
-
-	return m_Product;
-}
-
-
-void OrderLine::SetProduct(Product newVal){
-
-	m_Product = newVal;
-}
-
-
-void OrderLine::setProduct(Product newVal){
-
-	m_Product = newVal;
+int OrderLine::calculateOrderLinePrice() const {
+    if (product != nullptr) {
+        return product->getPrice() * quantity;
+    }
+    return 0; // Return 0 if product is null
 }
