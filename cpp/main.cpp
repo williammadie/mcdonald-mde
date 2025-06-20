@@ -32,6 +32,9 @@ int main() {
     std::cout << "Added 2 Burgers to the order." << std::endl;
     order.addOrderLine(new OrderLine(&fries, 1));
     std::cout << "Added 1 Fries to the order." << std::endl;
+    order.removeOrderLine(new OrderLine(&fries, 1)); // Simulating removal of fries
+    //print order the id 
+    std::cout << "Order ID: " << order.orderId << std::endl;
 
     try {
         // Validation de la commande

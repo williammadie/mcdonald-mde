@@ -14,7 +14,7 @@ public:
 
     void decreaseStock(int quantity);
     void increaseStock(int quantity);
-
+void restockIfOutOfStock(int restockAmount);
 private:
     std::string name;
     int price;
