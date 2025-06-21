@@ -56,6 +56,17 @@ public class Product {
 			return;
 		}
 		stock -= quantity;
+		autoReorder();
+	}
+
+	/**
+	 * Checks stock and auto-reorders if too low
+	 */
+	private void autoReorder() {
+		if (stock < 5) {
+			System.out.println("Stock is low. Auto-reordering 20 items.");
+			stock += 20;
+		}
 	}
 
 	/**
